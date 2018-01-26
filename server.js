@@ -29,9 +29,6 @@ app.use(compression())
 // 加载云引擎中间件
 app.use(AV.express())
 
-app.enable('trust proxy')
-app.use(AV.Cloud.HttpsRedirect())
-
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))

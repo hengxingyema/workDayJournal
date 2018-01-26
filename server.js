@@ -30,7 +30,7 @@ app.use(compression())
 app.use(AV.express())
 
 app.enable('trust proxy')
-app.use(AV.Cloud.HttpRedirect())
+app.use(AV.Cloud.HttpsRedirect())
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())

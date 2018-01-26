@@ -180,11 +180,11 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
 
 
     $scope.getAEBikeLog = function (EbikeNo) {
-        window.open("https://mimacx.leanapp.cn/mimacxLog/" + EbikeNo);
+        window.open("http://mimacx.leanapp.cn/mimacxLog/" + EbikeNo);
     };
 
     $scope.getInputEBikeLog = function () {
-        window.open("https://mimacx.leanapp.cn/mimacxLog/" + $scope.inputBikeNo);
+        window.open("http://mimacx.leanapp.cn/mimacxLog/" + $scope.inputBikeNo);
     };
 
     // toastr.info("请先登录运维帐号");
@@ -284,6 +284,6 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
 
     // 查看数据
     $scope.openButton = function () {
-        window.open('https://mimacx.leanapp.cn/bikeDateStatistics');
+        window.open('http://mimacx.leanapp.cn/bikeDateStatistics');
     }
 });

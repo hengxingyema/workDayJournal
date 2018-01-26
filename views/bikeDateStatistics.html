@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en,cn">
+<head>
+    <meta charset="UTF-8">
+    <title>数据统计</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.mimadd.com/logo57.png" />
+
+    <!-- 引入 AngularJS Mini 文件 -->
+    <script src="/angular/angular.js"></script>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>-->
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--需要遵守react的目录结构，日了狗-->
+    <link rel="stylesheet" href="/css/semantic.min.css">
+    <script src="/js/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="/css/flatpickr.min.css">
+    <script src="/js/flatpickr.min.js"></script>
+
+    <script src="/js/toastr.min.js"></script>
+    <link rel="text/html" href="/js/toastr.min.css">
+    <!--end-->
+
+    <!--网站内部js-->
+    <script src="/static/js/bikeDateStatistics.js"></script>
+
+</head>
+<body ng-app="bikeDateStatisticsApp" ng-controller="bikeDateStatisticsCtrl">
+    <div>
+        <h3 class="ui center aligned header" style="margin-top: 20px;font-size: 3vw">每日数据统计</h3>
+        <div class="ui divider"></div>
+
+        <div class="ui right labeled left icon input" style="margin-left: 30vw">
+            <i class="tags icon"></i>
+            <input type="text" placeholder="输入日期" ng-model="inputDate">
+            <a class="ui tag label">
+                格式：2017-12-10
+            </a>
+            <button class="ui blue submit button" ng-disabled="" ng-click="clickHereToView(0)">点击查看</button>
+        </div>
+
+        <div class="ui horizontal divider" style="color: red">
+            借车成功和失败统计
+        </div>
+
+        <div>
+            <table class="ui red table" style="font-size: 1.2vw">
+                <thead>
+                <tr>
+                    <th>类型</th>
+                    <th>借车成功总数</th>
+                    <th>百分比</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>借车成功</td>
+                    <td>{{borrowElectricBikeSCount}}</td>
+                    <td></td>
+
+                </tr>
+
+                <tr>
+                    <td>2G借车</td>
+                    <td>{{twoGBorrowSuccessCount}}</td>
+                    <td>{{twoG}}</td>
+
+                </tr>
+
+                <tr>
+                    <td>蓝牙借车</td>
+                    <td>{{bluetoothBorrowElectricBikeSucceedCount}}</td>
+                    <td>{{bluetooth}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <table class="ui orange table" style="font-size: 1.2vw">
+                <thead>
+                <tr>
+                    <th>类型</th>
+                    <th>失败总数</th>
+                    <th>百分比</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>借车失败</td>
+                    <td>{{borrowBikeFailureCount}}</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>2G开锁失败数</td>
+                    <td>{{unlockFaileCount}}</td>
+                    <td>{{unLock}}</td>
+                </tr>
+
+                <tr>
+                    <td>蓝牙开锁失败数</td>
+                    <td>{{batteryUnlockFaileCount}}</td>
+                    <td>{{batteryUnLock}}</td>
+                </tr>
+
+                <tr>
+                    <td>由于下线</td>
+                    <td>{{offlineBorrowBikeCount}}</td>
+                    <td>{{offline}}</td>
+                </tr>
+
+                <tr>
+                    <td>电量低失败</td>
+                    <td>{{lowPowerBorrowBikeCount}}</td>
+                    <td>{{lowPower}}</td>
+                </tr>
+
+                <tr>
+                    <td>车辆已被他人使用</td>
+                    <td>{{redisCBorrowBikeCount}}</td>
+                    <td>{{redisC}}</td>
+                </tr>
+
+                <tr>
+                    <td>未开蓝牙失败</td>
+                    <td>{{notOpenBluetoothBorrowBikeCount}}</td>
+                    <td>{{notOpenBattery}}</td>
+                </tr>
+
+                <tr>
+                    <td>服务区外失败</td>
+                    <td>{{outSABorrowBikeFailureCount}}</td>
+                    <td>{{outSA}}</td>
+                </tr>
+
+                <tr>
+                    <td>存在处理中订单</td>
+                    <td>{{existProcessOrderCount}}</td>
+                    <td>{{existProcess}}</td>
+                </tr>
+
+                <tr>
+                    <td>其他原因</td>
+                    <td>{{otherReasons}}</td>
+                    <td>{{other}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ui horizontal divider" style="color: red">
+            还车成功和失败统计
+        </div>
+
+        <table class="ui red table" style="font-size: 1.2vw">
+            <thead>
+            <tr>
+                <th>类型</th>
+                <th>还车成功总数</th>
+                <th>百分比</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>还车成功</td>
+                <td>{{returningBikeSuccessCount}}</td>
+                <td></td>
+
+            </tr>
+
+            <tr>
+                <td>2G还车</td>
+                <td>{{twoGReturningBikeSuccess}}</td>
+                <td>{{A}}</td>
+
+            </tr>
+
+            <tr>
+                <td>蓝牙还车</td>
+                <td>{{batteryReturningBikeSuccess}}</td>
+                <td>{{B}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <table class="ui orange table" style="font-size: 1.2vw">
+            <thead>
+            <tr>
+                <th>类型</th>
+                <th>还车失败总数</th>
+                <th>百分比</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>还车失败</td>
+                <td>{{returningBikeFailure}}</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>2G还车失败数</td>
+                <td>{{twoGReturningBikeFailure}}</td>
+                <td>{{C}}</td>
+            </tr>
+
+            <tr>
+                <td>蓝牙还车失败数</td>
+                <td>{{batteryReturningBikeFailure}}</td>
+                <td>{{D}}</td>
+            </tr>
+
+            <tr>
+                <td>还车时上锁失败且未开蓝牙</td>
+                <td>{{notOpenBatteryReBikeFailure}}</td>
+                <td>{{E}}</td>
+            </tr>
+
+            <tr>
+                <td>还车超时</td>
+                <td>{{returningBikeTimeout}}</td>
+                <td>{{F}}</td>
+            </tr>
+
+            <tr>
+                <td>服务区外还车失败</td>
+                <td>{{outSAReBikeFailure}}</td>
+                <td>{{G}}</td>
+            </tr>
+
+            <tr>
+                <td>GPS星数小于5</td>
+                <td>{{GPSFailure}}</td>
+                <td>{{H}}</td>
+            </tr>
+
+            <tr>
+                <td>其他原因</td>
+                <td>{{otherReasonsFailure}}</td>
+                <td>{{I}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

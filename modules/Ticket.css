@@ -1,0 +1,107 @@
+.item {
+
+}
+
+.meta {
+  color: #999;
+}
+
+.panelModerator {
+  border-color: #c1d5e4;
+}
+
+.panelModerator .heading {
+  background: #e3edf7;
+  border-color: #e3edf7;
+}
+
+.content {
+  /*
+    some user generated content contains unformatted code snippets, i have to
+    foruce word break for all these content
+
+    demo: http://localhost:3000/tickets/13164
+  */
+  overflow-wrap: break-word;
+}
+
+.content img {
+  max-width: 100%;
+}
+
+.content > div > *:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar {
+  position: sticky;
+  top: 70px;
+}
+
+.badge {
+  float: right;
+  font-style: normal;
+  font-size: 12px;
+  border: 1px solid;
+  padding: 4px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  color: #779bbf;
+}
+
+/* reset categroy inherited from CustomerServiceTickets */
+.category {
+  vertical-align: inherit;
+  margin-left: 0;
+}
+
+.categoryBlock {
+  font-size: inherit;
+  display: inline-block;
+  vertical-align: inherit;
+  margin-left: 0;
+  padding: 4px 8px;
+  color: #777;
+  border-color: #777;
+}
+
+.form {
+  display: flex;
+}
+
+@media (max-width: 800px) {
+
+  .form {
+    display: block;
+  }
+}
+
+.formLeft {
+  flex: 1;
+}
+
+.formRight {
+
+}
+
+.submit {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.markdownTip {
+  margin-top: 6px;
+  color: #999;
+}
+
+.markdownTip a {
+  color: #999;
+}
+
+.markdownTip a:hover {
+  color: #3090e4;
+}
+
+.markdownTip b {
+  color: #999;
+}

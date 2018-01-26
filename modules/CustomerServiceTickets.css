@@ -1,0 +1,146 @@
+.ticket {
+  padding: 10px 0 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.ticket:last-child {
+  border-bottom: none;
+}
+
+.heading {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.heading .left {
+  flex: 1;
+}
+
+.heading .right {
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #444;
+}
+
+.title:hover {
+  color: #3090e4;
+}
+
+.nid {
+  color: #afafaf;
+  margin-right: .5em;
+}
+
+.category,
+.satisfaction {
+  display: inline-block;
+  color: #afafaf;
+  margin-left: .5em;
+  border: 1px solid #d6d6d6;
+  font-size: 13px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  line-height: 1;
+  vertical-align: 2px;
+}
+
+.happy {
+  background: #e5ffce;
+  color: #3eb34e;
+  border-color: #e5ffce;
+}
+
+.unhappy {
+  background: #ffe3e3;
+  color: #f16c5d;
+  border-color: #ffe3e3;
+}
+
+.commentCounter {
+  color: #555;
+  text-decoration: none;
+}
+
+.commentCounterIcon {
+  -webkit-text-stroke: 1px #555;
+  text-stroke: 1px #555;
+  color: #fff;
+  vertical-align: -2px;
+  margin-right: 3px;
+}
+
+.commentCounter:hover {
+  color: #3090e4;
+  text-decoration: none;
+}
+
+.commentCounter:hover .commentCounterIcon {
+  -webkit-text-stroke: 1px #3090e4;
+  text-stroke: 1px #3090e4;
+}
+
+.meta {
+  display: flex;
+  color: #999;
+  font-size: 14px;
+}
+
+.meta .left {
+  flex: 1;
+}
+
+.meta .right {
+
+}
+
+.statusLink {
+  text-decoration: none;
+}
+
+.statusLink:hover {
+  text-decoration: none;
+}
+
+.status {
+  margin-right: .5em;
+}
+
+.creator a {
+  color: #777;
+  font-weight: normal;
+}
+
+.assignee {
+  margin-right: .5em;
+}
+
+.assignee a {
+  color: #777;
+  font-weight: normal;
+}
+
+.contributors a:last-child {
+  /* hide username text */
+  display: none;
+}
+
+.contributors img {
+  margin-right: 0;
+}
+
+.contributors > span > span {
+  display: inline-block;
+  margin-right: -10px;
+  transition: margin .2s ease;
+}
+
+.contributors:hover > span > span {
+  margin-right: 4px;
+}
+
+.contributors > span > span:last-child {
+  margin-right: 0;
+}

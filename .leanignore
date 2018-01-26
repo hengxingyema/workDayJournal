@@ -1,0 +1,7 @@
+.git/
+.DS_Store
+.avoscloud/
+.leancloud/
+node_modules/
+datas/
+dist/

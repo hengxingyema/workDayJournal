@@ -48,7 +48,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
     function getAllOperationArea() {
         $scope.netRequestState = 'start';
         //获取所有运营区域
-        $http.post("https://api.mimacx.com/BatteryCar/GetAllArea",{
+        $http.post("http://minihorse.mimacx.com/BatteryCar/GetAllArea",{
 
         })
             .then(function(result) {
@@ -91,7 +91,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
 
         $scope.selectedAreaEBikes = [];
         $scope.netRequestState = 'start';
-        $http.post("https://api.mimacx.com/BatteryCar/GetBicycleInfoByAreaGuid",{
+        $http.post("http://minihorse.mimacx.com/BatteryCar/GetBicycleInfoByAreaGuid",{
             "AreaGuid" : selectedAreaGuid,
             "PageIndex" : 1,
             "PageSize" : 1000
@@ -153,7 +153,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
         // return;
 
         $scope.netRequestState = 'start';
-        $http.post("https://api.mimacx.com/Peration/Login",{
+        $http.post("http://minihorse.mimacx.com/Peration/Login",{
             "UserName" : $scope.mimaYunweiAccount,
             "UserPass" : $scope.mimaYunweiMima,
             "Accesskey" : '123456'
@@ -199,7 +199,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
         eListBikeInfo.isGetting = true;
         eListBikeInfo.paramValue = '请求中...';
 
-        $http.post("https://api.mimacx.com/Peration/GetProperty",{
+        $http.post("http://minihorse.mimacx.com/Peration/GetProperty",{
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "ParamName" : eListBikeInfo.gettingParam,
             "Accesskey" : '123456',
@@ -233,7 +233,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
 
         eListBikeInfo.isSetting = true;
         eListBikeInfo.paramValue = '设置...';
-        $http.post("https://api.mimacx.com/Peration/SetProperty",{
+        $http.post("http://minihorse.mimacx.com/Peration/SetProperty",{
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "ParamName" : eListBikeInfo.settingParam,
             "ParamValue" : eListBikeInfo.settingValue,

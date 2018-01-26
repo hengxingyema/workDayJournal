@@ -17,7 +17,7 @@ export default class Regions extends React.Component {
 
     componentDidMount() {
 
-        fetch('https://api.mimacx.com/BatteryCar/GetAllArea', {
+        fetch('http://minihorse.mimacx.com/BatteryCar/GetAllArea', {
             method: 'POST'
         })
             .then((response) => response.json())

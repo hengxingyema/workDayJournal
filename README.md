@@ -118,7 +118,7 @@ npm run dev:client
 
 #### 本地访问
 
-访问 http://localhost:3000 即可。
+访问 http://localhost:8080 即可。
 
 **提示**：因为应用依赖较多的 [云函数](https://leancloud.cn/docs/leanengine_cloudfunction_guide-node.html#云函数) 和 [Hook 函数](https://leancloud.cn/docs/leanengine_cloudfunction_guide-node.html#Hook_函数) ，而本地运行时暂不能调用到本地应用的相关代码，所以需要先将应用部署到云端。# workDayJournal
 # workDayJournal

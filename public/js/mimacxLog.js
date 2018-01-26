@@ -222,7 +222,7 @@ app.controller('mimacxLogCtrl', function($scope, $http, $location) {
             }else {
                 $scope.netRequestState = 'start';
                 if($scope.ebikeNumber.indexOf('mimacx00') == -1){
-                    $http.post("https://api.mimacx.com/BatteryCar/GetControllerInfoByBicycleNo",{
+                    $http.post("http://api.mimacx.com/BatteryCar/GetControllerInfoByBicycleNo",{
                         "BicycleNo" : $scope.ebikeNumber,
                         "AppVersion" : "1.3.0"
                     })

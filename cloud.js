@@ -300,10 +300,10 @@ function getUserPhoneNumber(sn) {
 
                     if(phoneList.length == 0){
                         //无用户手机号时发这样几个手机号
-                        phoneList.push('15850101846');
+                        // phoneList.push('15850101846');
                         phoneList.push('15852580112');
-                        phoneList.push('18379606803');
-                        phoneList.push('17601528908');
+                        // phoneList.push('18379606803');
+                        // phoneList.push('17601528908');
                     }
 
                     if(sendPhoneIndex >= phoneList.length){
@@ -497,10 +497,10 @@ function alarmBike(sn, satellite, alarmType) {
 
                                     if(phoneList.length == 0){
                                         //无用户手机号时发这样几个手机号
-                                        phoneList.push('15850101846');
+                                        // phoneList.push('15850101846');
                                         phoneList.push('15852580112');
-                                        phoneList.push('18379606803');
-                                        phoneList.push('17601528908');
+                                        // phoneList.push('18379606803');
+                                        // phoneList.push('17601528908');
                                     }
 
                                     if(sendPhoneIndex >= phoneList.length){

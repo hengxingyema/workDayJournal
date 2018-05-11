@@ -24,11 +24,11 @@ exports.getServiceMonitorMembers = function () {
         template: 'ServiceMonitor',
         ServiceMonitorDes: 'Socket服务器异常'
     };
-    var sendSmsData_Wrr = {
-        mobilePhoneNumber: '18362627616',
-        template: 'ServiceMonitor',
-        ServiceMonitorDes: 'Socket服务器异常(截屏异常时的log)'
-    };
+    // var sendSmsData_Wrr = {
+    //     mobilePhoneNumber: '18362627616',
+    //     template: 'ServiceMonitor',
+    //     ServiceMonitorDes: 'Socket服务器异常(截屏异常时的log)'
+    // };
     var sendSmsData_Sk = {
         mobilePhoneNumber: '13815990855',
         template: 'ServiceMonitor',

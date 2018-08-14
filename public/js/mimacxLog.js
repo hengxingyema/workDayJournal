@@ -136,6 +136,19 @@ function toCoordinates(contentObject)
     // return Wgs84ToGcj02.gps84_To_Gcj02(lat, lon).toString();
 }
 
+//  给行驶轨迹使用
+function bikeTrack(contentObject)
+{
+    if(contentObject.messageBody.latitudeMinute == undefined){
+        return undefined;
+    }
+    var lat = Number(contentObject.messageBody.latitudeMinute) / 60.0 + Number(contentObject.messageBody.latitudeDegree);
+    var lon = Number(contentObject.messageBody.longitudeMinute) / 60.0 + Number(contentObject.messageBody.longitudeDegree);
+
+    return lon + ',' + lat;
+    // return Wgs84ToGcj02.gps84_To_Gcj02(lat, lon).toString();
+}
+
 
 app.controller('mimacxLogCtrl', function($scope, $http, $location) {
 
@@ -415,10 +428,12 @@ app.controller('mimacxLogCtrl', function($scope, $http, $location) {
                             if(contentObject)
                                 if(contentObject.messageBody != undefined){
                                     contentObject.messageBody.gpsPointStr = toCoordinates(contentObject);
+                                    contentObject.messageBody.trackGpsPointstr = bikeTrack(contentObject);
                                 }
                             if(contentObject.data != undefined){
                                 contentObject.messageBody = contentObject.data;
                                 contentObject.messageBody.gpsPointStr = toCoordinates(contentObject);
+                                contentObject.messageBody.trackGpsPointstr = bikeTrack(contentObject);
                             }
 
                             if(serviceData.SourceType == 1){
@@ -609,6 +624,51 @@ app.controller('mimacxLogCtrl', function($scope, $http, $location) {
             });
 
 
+    }
+
+    $scope.getTrack = function () {
+
+        var bikeObj = []
+
+        for (var e = 0; e < $scope.bikeDisplayLogDateList.length; e++){
+
+            var pp = $scope.bikeDisplayLogDateList[e].Content.messageBody
+            if (pp != '' && pp != undefined && pp.trackGpsPointstr != undefined){
+                bikeObj.push(pp.trackGpsPointstr)
+            }
+
+        }
+
+        if (bikeObj.length > 0){
+
+            changePoint(bikeObj)
+        }
+
+    }
+
+    function changePoint(object) {
+
+        var point
+
+        point = object.join('|');
+
+        var Url = "http://restapi.amap.com/v3/assistant/coordinate/convert?key=fd4072ddb2866fcc228506913d99df20&locations=" + point +"&coordsys=gps"
+        $.get(Url, function(data) {
+
+
+            var turnPoint = data.locations;
+
+            var key = ';'
+            var ke = '0,0;'
+
+            var us = turnPoint.replace(new RegExp(ke,'g'), '')
+
+            var result = us.replace(new RegExp(key, 'g'), "|")
+
+            // console.log('wucailong :', result);
+            window.open("http://mimacx.leanapp.cn/bikeTrack/?" + result);
+
+        });
     }
 
 });

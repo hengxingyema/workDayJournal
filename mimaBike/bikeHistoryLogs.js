@@ -14,7 +14,7 @@ function sleep(milliSeconds) {
     while (new Date().getTime() < startTime + milliSeconds){
 
     }
-    console.log('---------- end debug');;
+    console.log('---------- end debug');
 };
 //end debug code
 

@@ -30,7 +30,7 @@
     <!--网站内部js-->
     <script src="/static/js/mimacxLog.js"></script>
 </head>
-<body ng-app="mimacxLogApp" ng-controller="mimacxLogCtrl" style="margin-top: 1.5%">
+<body ng-app="mimacxLogApp" ng-controller="mimacxLogCtrl" style="margin-top: 2.5vw">
 
     <div class="ui two column centered grid">
         <div>
@@ -47,8 +47,8 @@
         </div>
 
         <div class="four column centered row">
-            <div class="column">
-                <div class="ui left icon input">
+            <div class="column" >
+                <div class="ui left icon input" style="width: 20vw">
                     <input class=ebike-log-flatpickr type="text" placeholder="选择日期(天)">
                     <i class="checked calendar icon"></i>
                 </div>
@@ -109,28 +109,45 @@
         </div>
     </div>
 
+
+
     <div class="ui horizontal divider" style="margin-top: 2%">
         "I'm a singer x-woman"
     </div>
 
-    <div class="ui pagination menu" style="margin-top: 50px;margin-left: 500px">
-        <a class="icon item" ng-click="getUpBikeLog(-1)">
-            <i class="right arrow up icon"></i>
-        </a>
-        <a class="item">
-            <i class="left bicycle icon"></i>
-        </a>
-        <a class="icon item">
-            第{{currentPage}}页
-        </a>
-        <a class="item">
-            <i class="left bicycle icon"></i>
-        </a>
-        <a class="icon item" ng-click="getUpBikeLog(1)">
-            <i class="left arrow down icon"></i>
-        </a>
+    <div class="ui horizontal divider">
+        <button class="ui violet basic button" ng-click="getTrack(EBikeInfo.SN)">
+            查看车辆轨迹
+        </button>
+
+        <a class="ui red tag label">此功能主要用于车辆丢失，查找路线使用，请勿重复点击</a>
 
     </div>
+
+    <div style="margin-top: 20px;margin-bottom: 30px;margin-left: 400px;position: relative;">
+
+        <div class="ui pagination menu" >
+
+            <a class="icon item" ng-click="getUpBikeLog(-1)">
+                <i class="right arrow up icon"></i>
+            </a>
+            <a class="item">
+                <i class="left bicycle icon"></i>
+            </a>
+            <a class="icon item">
+                第{{currentPage}}页
+            </a>
+            <a class="item">
+                <i class="left bicycle icon"></i>
+            </a>
+            <a class="icon item" ng-click="getUpBikeLog(1)">
+                <i class="left arrow down icon"></i>
+            </a>
+
+        </div>
+    </div>
+
+
 
     <table class="ui celled table">
         <thead>
@@ -284,7 +301,7 @@
         </tbody>
     </table>
 
-    <div class="ui pagination menu" style="margin-top: 50px;margin-left: 500px">
+    <div class="ui pagination menu" style="margin-top: 50px;margin-left: 400px">
         <a class="icon item" ng-click="getEBikeLog(-1)">
             <i class="right arrow up icon"></i>
         </a>

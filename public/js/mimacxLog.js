@@ -671,7 +671,7 @@ app.controller('mimacxLogCtrl', function($scope, $http, $location) {
 
 
 
-            window.open("http://localhost:8080/bikeTrack");
+            window.open("http://mimacx.leanapp.cn/bikeTrack");
 
 
         });

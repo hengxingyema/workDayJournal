@@ -665,10 +665,15 @@ app.controller('mimacxLogCtrl', function($scope, $http, $location) {
 
             var result = us.replace(new RegExp(key, 'g'), "|")
 
-            // console.log('wucailong :', result);
-            window.open("http://mimacx.leanapp.cn/bikeTrack/?" + result);
+
+            // 本地存储数据，其他界面使用
+            localStorage.setItem('obj', JSON.stringify({ name: result }));
+
+
+
+            window.open("http://localhost:8080/bikeTrack");
+
 
         });
     }
-
 });

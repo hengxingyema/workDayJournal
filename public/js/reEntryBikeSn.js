@@ -11,7 +11,7 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1) {
 
         $scope.netRequestState = 'start';
         $http.post("http://yw.mimacx.com:2000/Peration/Login", {
-            withCredentials:true,
+            
             "UserName" : $scope.mimaYunweiAccount,
             "UserPass" : $scope.mimaYunweiMima,
             "mimacxtimeSpan" : $scope.timestamp,

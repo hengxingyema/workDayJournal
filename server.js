@@ -48,6 +48,7 @@ var traverseUnLockVehicle = require('./routes/traverseUnLockVehicle')
 var bikeDateStatistics = require('./routes/bikeDateStatistics')
 var disconnectLogRem = require('./routes/disconnectLogRemApi')
 var bikeTrack = require('./routes/bikeTrack')
+var reEntryBikeSn = require('./routes/reEntryBikeSNApi')
 
 
 app.set('views', path.join(__dirname, 'views'))
@@ -66,6 +67,7 @@ app.use('/traverseUnLockVehicle', traverseUnLockVehicle)
 app.use('/bikeDateStatistics',bikeDateStatistics)
 app.use('/disconnectLogRem',disconnectLogRem)
 app.use('/bikeTrack',bikeTrack)
+app.use('/reEntryBikeSn',reEntryBikeSn)
 
 //end angularjs
 

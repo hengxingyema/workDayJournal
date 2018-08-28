@@ -42,8 +42,8 @@
         </h1>
     </div>
 
-    <div class="alert alert-success" role="alert">
-        <div class="alert-link">请先登录运维人员账号</div>
+    <div class="alert alert-success" role="alert" style="margin-top: 10px;">
+        <div class="alert-link" style="text-align: center">请先登录运维人员账号</div>
     </div>
 
     <div class="form-inline">
@@ -53,11 +53,35 @@
         </div>
         <div class="form-group">
             <label >密码：</label>
-            <input type="email" class="form-control" placeholder="输入运维密码" ng-model="mimaYunweiMima">
+            <input type="text" class="form-control" placeholder="输入运维密码" ng-model="yunWeiPassWord">
         </div>
         <button type="submit" class="btn btn-default" ng-click="yunWeiLogin()">登录</button>
 
         <span class="label label-default" ng-show="mimaYunweiLoginInfo != undefined">{{mimaYunweiLoginInfo}}</span>
+    </div>
+
+    <div class="ui horizontal divider">
+        我是一个分割线
+    </div>
+
+    <div class="alert alert-info" role="alert" style="text-align: center">更新SN号，请输入正确车辆号和SN号</div>
+
+    <div class="form-inline" style="margin-bottom: 20px">
+        <div class="form-group">
+            <label >车辆号：</label>
+            <input type="text" class="form-control" placeholder="输入运维账号" ng-model="bikeNumber">
+        </div>
+        <div class="form-group">
+            <label >车辆SN号：</label>
+            <input type="text" class="form-control" placeholder="输入运维密码" ng-model="bikeSnNumber">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="reEntryBike()">修改</button>
+
+        <a class="ui teal tag label" ng-show="reEntryBikeInfo != undefined">{{reEntryBikeInfo}}</a>
+    </div>
+
+    <div class="ui horizontal divider">
+        我是一个分割线
     </div>
 
 </body>

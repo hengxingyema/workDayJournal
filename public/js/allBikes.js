@@ -1,9 +1,7 @@
 /**
  * Created by wujiangwei on 2017/7/13.
  */
-var app = angular.module('allBikesApp',[
-
-])
+var app = angular.module('allBikesApp',['Encrypt'])
 
 function toCoordinates(contentObject)
 {
@@ -39,7 +37,7 @@ var by = function(name, minor) {
     }
 };
 
-app.controller('allBikesCtrl', function($scope, $http, $location) {
+app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
     //目前测试区域
     //Tbit,颐和盛世小区,苏州度假区测试,东凤镇,江苏大学，三峡大学
@@ -130,33 +128,20 @@ app.controller('allBikesCtrl', function($scope, $http, $location) {
             });
     };
 
+    $scope.timestamp = new Date().getTime();
+
+    $scope.mimacxSign = Md5.hex_md5($scope.timestamp + '98klFJ=UX!878_XX8fk')
+
     //运维人员登录
     $scope.yunweiAccountSession = undefined;
     $scope.yunweiLogin = function () {
 
-
-        // $http.post("http://localhost:8080/logs/ebikeHistoryLocationBySnAndTime",{
-        //     "SN" : 'mimacx0000000691',
-        //     'queryDate':'2017-10-09 16:33:48'
-        // })
-        //     .then(function(result) {
-        //         console.log(result);
-        //     })
-        //     .catch(function (result) {
-        //         //error
-        //         console.log(result);
-        //     })
-        //     .finally(function () {
-        //         //
-        //     });
-        //
-        // return;
-
         $scope.netRequestState = 'start';
-        $http.post("http://minihorse.mimacx.com/Peration/Login",{
+        $http.post("http://yw.mimacx.com:2000/Peration/Login",{
             "UserName" : $scope.mimaYunweiAccount,
             "UserPass" : $scope.mimaYunweiMima,
-            "Accesskey" : '123456'
+            "mimacxtimeSpan" : $scope.timestamp,
+            "mimacxSign" : $scope.mimacxSign
         })
             .then(function(result) {
                 var response = result.data;

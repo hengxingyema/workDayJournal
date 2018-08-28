@@ -10,33 +10,48 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1) {
     $scope.yunWeiLogin = function () {
 
         $scope.netRequestState = 'start';
-        $http.post("http://yw.mimacx.com:2000/Peration/Login", {
-            "Accesskey" : '123456',
+        $scope.netRequestState = 'start';
+        $http.post("http://yw.mimacx.com:2000/Peration/Login",{
             "UserName" : $scope.mimaYunweiAccount,
-            "UserPass" : $scope.mimaYunweiMima,
+            "UserPass" : $scope.yunWeiPassWord,
             "mimacxtimeSpan" : $scope.timestamp,
-            "mimacxSign" : $scope.mimacxSign,
+            "mimacxSign" : $scope.mimacxSign
         })
-            .then(function(result) {
-                var response = result.data;
-                if(response.returnCode == 1){
-                    $scope.yunweiAccountSession = response.Data.SessionKey;
-                    $scope.mimaYunweiLoginInfo = '登录成功:' + response.Data.LoginName;
+        .then(function(result) {
+            var response = result.data;
+            if(response.returnCode == '1'){
+                $scope.yunweiAccountSession = response.Data.SessionKey;
+                $scope.mimaYunweiLoginInfo = '登录成功:' + response.Data.LoginName;
 
-                    getAllOperationArea();
-                }else {
-                    //error
-                    $scope.mimaYunweiLoginInfo = response.returnMsg;
-                }
-                $scope.netRequestState = 'end';
-            })
-            .catch(function (result) {
+            }else {
                 //error
-                $scope.mimaYunweiLoginInfo = '网络错误';
-                $scope.netRequestState = 'end';
-            })
+                $scope.mimaYunweiLoginInfo = response.returnMsg;
+            }
+        })
     };
 
+    $scope.reEntryBike = function () {
+        if ($scope.yunweiAccountSession != undefined){
+            $http.post("http://yw.mimacx.com:2000/Operations/UpdateSystemNo",{
+                "SessionKey": $scope.yunweiAccountSession,
+                "mimacxtimeSpan" : $scope.timestamp,
+                "mimacxSign" : $scope.mimacxSign,
+                "BicycleNo" : $scope.bikeNumber,
+                "SystemNo" : 'mimacx' + $scope.bikeSnNumber
+            })
+            .then(function(result) {
+                var response = result.data;
+                if(response.returnCode == '200'){
+                    $scope.reEntryBikeInfo = '更新成功'
 
+                }else {
+                    //error
+                    $scope.reEntryBikeInfo = response.returnMsg;
+                }
+            })
+        }else {
+            $scope.reEntryBikeInfo = '请先登录运维账号';
+        }
+    }
     
 })

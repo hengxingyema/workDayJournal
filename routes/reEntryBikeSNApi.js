@@ -9,7 +9,7 @@ var redisUtil = require('../redis/leanObjectRedis');
 
 
 router.get('/', function(req, res) {
-    res.render('reEntryBikeSn');
+    res.render('reEntryBikeSN');
 });
 
 

@@ -80,6 +80,13 @@
         <a class="ui teal tag label" ng-show="reEntryBikeInfo != undefined">{{reEntryBikeInfo}}</a>
     </div>
 
+    <div class="progress">
+        <div ng-class="['Bar',vm.style]" ng-style="{width:vm.progress+'%'}">
+            <div ng-if='vm.text'>{{vm.progress}}%</div>
+        </div>
+    </div>
+    </br>
+
     <div class="ui horizontal divider">
         我是一个分割线
     </div>

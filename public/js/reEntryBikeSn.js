@@ -1,6 +1,6 @@
 var app = angular.module('reEntryBikeSnApp',['Encrypt'])
 
-app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1) {
+app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1,$interval) {
 
     $scope.timestamp = new Date().getTime();
 
@@ -30,7 +30,13 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1) {
         })
     };
 
+    var vm=$scope.vm={};
+    vm.style='blue';
+    vm.progress=0;
+    vm.text=true;
     $scope.reEntryBike = function () {
+        vm.progress=0;
+
         if ($scope.yunweiAccountSession != undefined){
             $http.post("http://yw.mimacx.com:2000/Operations/UpdateSystemNo",{
                 "SessionKey": $scope.yunweiAccountSession,
@@ -41,17 +47,24 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1) {
             })
             .then(function(result) {
                 var response = result.data;
+
                 if(response.returnCode == '200'){
-                    $scope.reEntryBikeInfo = '更新成功'
+                    $scope.reEntryBikeInfo = response.returnMsg;
+                    vm.progress=100;
+                    $interval(function () {
+                        vm.progress=10;
+                    },5000)
 
                 }else {
                     //error
                     $scope.reEntryBikeInfo = response.returnMsg;
+                    vm.progress=50;
                 }
+
             })
         }else {
             $scope.reEntryBikeInfo = '请先登录运维账号';
+            vm.progress=0;
         }
     }
-    
 })

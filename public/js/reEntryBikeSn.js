@@ -10,7 +10,6 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1,$inte
     $scope.yunWeiLogin = function () {
 
         $scope.netRequestState = 'start';
-        $scope.netRequestState = 'start';
         $http.post("http://yw.mimacx.com:2000/Peration/Login",{
             "UserName" : $scope.mimaYunweiAccount,
             "UserPass" : $scope.yunWeiPassWord,
@@ -21,7 +20,7 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1,$inte
             var response = result.data;
             if(response.returnCode == '1'){
                 $scope.yunweiAccountSession = response.Data.SessionKey;
-                $scope.mimaYunweiLoginInfo = '登录成功:' + response.Data.LoginName;
+                $scope.mimaYunweiLoginInfo = response.Data.LoginName;
 
             }else {
                 //error

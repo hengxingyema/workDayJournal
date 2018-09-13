@@ -19,11 +19,6 @@ exports.sendAlarmSms = function (requestSmsData, callback) {
 }
 
 exports.getServiceMonitorMembers = function () {
-    var sendSmsData = {
-        mobilePhoneNumber: '17601528908',
-        template: 'ServiceMonitor',
-        ServiceMonitorDes: 'Socket服务器异常'
-    };
     // var sendSmsData_Wrr = {
     //     mobilePhoneNumber: '18362627616',
     //     template: 'ServiceMonitor',
@@ -34,18 +29,14 @@ exports.getServiceMonitorMembers = function () {
         template: 'ServiceMonitor',
         ServiceMonitorDes: 'Socket服务器异常(截屏异常时的log)'
     };
-    var sendSmsData_Wcl = {
-        mobilePhoneNumber: '15852580112',
-        template: 'ServiceMonitor',
-        ServiceMonitorDes: 'Socket服务器异常(电话相关人)'
-    };
-    var sendSmsData_Lym = {
-        mobilePhoneNumber: '18379606803',
-        template: 'ServiceMonitor',
-        ServiceMonitorDes: 'Socket服务器异常(电话相关人)'
-    };
+    // var sendSmsData_Wcl = {
+    //     mobilePhoneNumber: '15852580112',
+    //     template: 'ServiceMonitor',
+    //     ServiceMonitorDes: 'Socket服务器异常(电话相关人)'
+    // };
+
 
     return [sendSmsData];
 
-    return [sendSmsData, sendSmsData_Sk, sendSmsData_Wrr, sendSmsData_Wcl, sendSmsData_Lym];
+    return [sendSmsData_Sk, sendSmsData_Wrr, sendSmsData_Wcl];
 }

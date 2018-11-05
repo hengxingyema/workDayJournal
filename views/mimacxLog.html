@@ -42,10 +42,6 @@
 
         </div>
 
-        <div class="ui horizontal divider">
-            I'm a singer x-man
-        </div>
-
         <div class="four column centered row">
             <div class="column" >
                 <div class="ui left icon input" style="width: 20vw">
@@ -61,13 +57,13 @@
                 </div>
             </div>
 
-            <div class="column">
-                <div class="ui left icon action input">
-                    <i class="mobile icon"></i>
-                    <input type="text" placeholder="用户手机(试用)" ng-model="ebikeUserPhone">
-                    <button class="ui blue submit button" ng-disabled="ebikeUserPhone.length != 11" ng-click="getEBikeLog(0)">查看车辆日志</button>
-                </div>
-            </div>
+            <!--<div class="column">-->
+                <!--<div class="ui left icon action input">-->
+                    <!--<i class="mobile icon"></i>-->
+                    <!--<input type="text" placeholder="用户手机(试用)" ng-model="ebikeUserPhone">-->
+                    <!--<button class="ui blue submit button" ng-disabled="ebikeUserPhone.length != 11" ng-click="getEBikeLog(0)">查看车辆日志</button>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
 
         <div class="ui compact menu">
@@ -334,28 +330,28 @@
         </div>
 
         <div class="ui horizontal segments">
-            <div class="ui segment message">
-                <div class="header">
-                    觅马日志系统解释
-                </div>
-                <ul class="list">
-                    <li>心跳包日志包不显示</li>
-                    <li>心跳包显示最近的一次时间</li>
-                    <li>若有其他报文则心跳包延后到下个批次</li>
-                    <li>登录鉴权显示</li>
-                    <li>车辆到服务器报文显示</li>
-                    <li>服务器发送命令给车辆的报文</li>
-                    <li>车辆回复服务器命令的报文</li>
-                    <li>App蓝牙报文显示</li>
-                </ul>
-            </div>
+            <!--<div class="ui segment message">-->
+                <!--<div class="header">-->
+                    <!--觅马日志系统解释-->
+                <!--</div>-->
+                <!--<ul class="list">-->
+                    <!--<li>心跳包日志包不显示</li>-->
+                    <!--<li>心跳包显示最近的一次时间</li>-->
+                    <!--<li>若有其他报文则心跳包延后到下个批次</li>-->
+                    <!--<li>登录鉴权显示</li>-->
+                    <!--<li>车辆到服务器报文显示</li>-->
+                    <!--<li>服务器发送命令给车辆的报文</li>-->
+                    <!--<li>车辆回复服务器命令的报文</li>-->
+                    <!--<li>App蓝牙报文显示</li>-->
+                <!--</ul>-->
+            <!--</div>-->
 
             <div class="ui blue segment message">
                 <div class="header">
                     报文类型解析
                 </div>
                 <ul class="list">
-                    <li>1：开锁状态下每30s上报一次的信息</li>
+                    <li>1：开锁状态下每1min上报一次的信息</li>
                     <li>2：未开锁状态下每5min上报一次的信息</li>
                     <li>3：由车辆开始充电触发的上报信息</li>
                     <li>4：由车辆断开充电触发的上报信息</li>

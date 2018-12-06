@@ -230,7 +230,7 @@ function structLogContent(leanContentObject) {
                 if(contentObject.messageBody.chargeCount != undefined && contentObject.messageBody.chargeCount != null && contentObject.messageBody.chargeCount != 'null'){
                     leanContentObject.set('chargeCount', parseInt(contentObject.messageBody.chargeCount));
                 }
-
+                
                 leanContentObject.set('totalMileage', parseFloat(contentObject.messageBody.totalMileage));
                 leanContentObject.set('errorCode', contentObject.messageBody.errorCode);
                 leanContentObject.set('battery', parseInt(contentObject.messageBody.battery));

@@ -1,6 +1,17 @@
 var app = angular.module('reEntryBikeSnApp',['Encrypt'])
 
-app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1,$interval) {
+app.controller('reEntryBikeSnCtrl',
+    [ '$scope', '$http', 'Md5', 'Base64', 'Sha1', '$interval',function ($scope,$http,Md5,Base64,Sha1,$interval) {
+
+    document.oncontextmenu = function(){
+        return false;
+    }
+
+    var mo=function(e){e.preventDefault();};
+    function stop(){
+        document.body.style.overflow='hidden';
+        document.addEventListener("touchmove",mo,false);//禁止页面滑动
+    }
 
     $scope.timestamp = new Date().getTime();
 
@@ -11,8 +22,8 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1,$inte
 
         $scope.netRequestState = 'start';
         $http.post("http://yw.mimacx.com:2000/Peration/Login",{
-            "UserName" : $scope.mimaYunweiAccount,
-            "UserPass" : $scope.yunWeiPassWord,
+            "UserName" : "wucailongMaster",
+            "UserPass" : "wcl",
             "mimacxtimeSpan" : $scope.timestamp,
             "mimacxSign" : $scope.mimacxSign
         })
@@ -66,4 +77,4 @@ app.controller('reEntryBikeSnCtrl', function ($scope,$http,Md5,Base64,Sha1,$inte
             vm.progress=0;
         }
     }
-})
+}])

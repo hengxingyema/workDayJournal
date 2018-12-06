@@ -1,5 +1,5 @@
 .progress{
-    width:400px;
+    width:auto;
     border:1px solid #ccc;
     height: 28px;
     text-align: center;
@@ -22,3 +22,87 @@
 .green{
     background: green;
 }
+
+
+/*手机适配*/
+
+*{
+    margin:0;padding:0;outline:0
+}
+a{
+    text-decoration:none
+}
+body,html{
+    font-size:16px;
+    font-family:'Microsoft YaHei,微软雅黑';
+    height:100%;
+    text-align: center;
+}
+-webkit-input-placeholder{
+    color:#ccc
+}
+::-moz-placeholder{
+    color:#ccc
+}
+:-ms-input-placeholder{
+    color:#ccc
+}
+input:-moz-placeholder{
+    color:#ccc
+}
+
+@media only screen and (min-width:320px) and (min-height:480px){
+    html{
+        font-size:20px!important
+    }
+
+    .form-inline {
+        text-align: center;
+    }
+}
+@media only screen and (min-width:320px) and (min-height:568px){
+    html{
+        font-size:20px!important
+    }
+
+    .form-inline {
+        text-align: center;
+    }
+}
+@media only screen and (min-width:360px) and (min-height:640px){
+    html{
+        font-size:22.5px!important
+    }
+
+    .form-inline {
+        text-align: center;
+    }
+}
+@media only screen and (min-width:375px) and (min-height:667px){
+    html{
+        font-size:23.5px!important
+    }
+
+    .form-inline {
+        text-align: center;
+    }
+}
+@media only screen and (min-width:414px) and (min-height:736px){
+    html{
+        font-size:25.9px!important
+    }
+
+    .form-inline {
+        text-align: center;
+    }
+}
+@media only screen and (min-width:736px){
+    html{
+        font-size:46px!important
+    }
+
+    .form-inline {
+        text-align: center;
+    }
+}
+

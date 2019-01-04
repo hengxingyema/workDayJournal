@@ -40,8 +40,8 @@ var by = function(name, minor) {
 app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
     //目前测试区域
-    //Tbit,颐和盛世小区,苏州度假区测试,东凤镇,江苏大学，三峡大学
-    $scope.validAreasNames = ['度假区', '池州', '东凤镇', '颐和盛世小区', '江苏', '三峡大学', '测试', '渭南', '合肥', '枣庄'];
+    //Tbit,颐和盛世小区,苏州度假区测试,东凤镇,（江苏大学，三峡大学，合肥暂时不运营，所以去除）
+    $scope.validAreasNames = ['度假区', '池州', '东凤镇', '颐和盛世小区', '渭南', '三原', '洋县', '彬州','礼泉'];
 
     function getAllOperationArea() {
         $scope.netRequestState = 'start';
@@ -138,8 +138,8 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
         $scope.netRequestState = 'start';
         $http.post("http://yw.mimacx.com:2000/Peration/Login",{
-            "UserName" : $scope.mimaYunweiAccount,
-            "UserPass" : $scope.mimaYunweiMima,
+            "UserName" : 'wucailongMaster',
+            "UserPass" : 'wcl',
             "mimacxtimeSpan" : $scope.timestamp,
             "mimacxSign" : $scope.mimacxSign
         })
@@ -184,11 +184,13 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
         eListBikeInfo.isGetting = true;
         eListBikeInfo.paramValue = '请求中...';
 
-        $http.post("http://minihorse.mimacx.com/Peration/GetProperty",{
+        $http.post("http://yw.mimacx.com:2000/Peration/GetProperty",{
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "ParamName" : eListBikeInfo.gettingParam,
             "Accesskey" : '123456',
-            "SessionKey" : $scope.yunweiAccountSession
+            "SessionKey" : $scope.yunweiAccountSession,
+            "mimacxtimeSpan" : $scope.timestamp,
+            "mimacxSign" : $scope.mimacxSign
         })
             .then(function(result) {
                 var response = result.data;
@@ -218,12 +220,14 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
         eListBikeInfo.isSetting = true;
         eListBikeInfo.paramValue = '设置...';
-        $http.post("http://minihorse.mimacx.com/Peration/SetProperty",{
+        $http.post("http://yw.mimacx.com:2000/Peration/SetProperty",{
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "ParamName" : eListBikeInfo.settingParam,
             "ParamValue" : eListBikeInfo.settingValue,
             "Accesskey" : '123456',
-            "SessionKey" : $scope.yunweiAccountSession
+            "SessionKey" : $scope.yunweiAccountSession,
+            "mimacxtimeSpan" : $scope.timestamp,
+            "mimacxSign" : $scope.mimacxSign
         })
             .then(function(result) {
                 eListBikeInfo.isSetting = false;

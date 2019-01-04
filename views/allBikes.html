@@ -43,16 +43,6 @@
     <!--运维人员登录-->
     <div style="margin-left: 3%" class="ui horizontal list">
         <div class="item">
-            <div class="ui icon input">
-                <input type="text" placeholder="运维帐号" ng-model="mimaYunweiAccount">
-            </div>
-        </div>
-        <div class="item">
-            <div class="ui icon input">
-                <input type="text" placeholder="运维密码" ng-model="mimaYunweiMima">
-            </div>
-        </div>
-        <div class="item">
             <div class="ui primary button" ng-click="yunweiLogin()">
                 登录
             </div>
@@ -85,19 +75,38 @@
     </div>
 
     <div class="ui horizontal divider">
-        下面是车辆列表
+        下面是所以有车辆的区域列表
     </div>
 
     <!--所有运维区域-->
     <div class="ui secondary pointing menu">
-        <a ng-repeat="areaInfo in allMimaAreas" ng-click="seeAllBikeInSelectedArea($index, areaInfo.PartnerAreaGuid)"
-           ng-class="{true:'active item',false:'item'}[selecetedAreaIndex == $index]" >
-            {{areaInfo.PartnerAreaName}}
-        </a>
+        <!--<a ng-repeat="areaInfo in allMimaAreas" ng-click="seeAllBikeInSelectedArea($index, areaInfo.PartnerAreaGuid)"-->
+           <!--ng-class="{true:'active item',false:'item'}[selecetedAreaIndex == $index]" >-->
+            <!--{{areaInfo.PartnerAreaName}}-->
+        <!--</a>-->
 
-        <div class="right menu">
+        <div class="ui floating dropdown labeled icon button" style="margin-left: 35px;margin-bottom: 20px">
+            <i class="world icon"></i>
+            <span class="text">选择区域</span>
+            <div class="menu">
+                <div class="ui icon search input">
+                    <i class="search icon"></i>
+                    <input type="text" placeholder="搜索...">
+                </div>
+
+                <div class="scrolling menu">
+                    <div class="item" ng-repeat="areaInfo in allMimaAreas" ng-click="seeAllBikeInSelectedArea($index, areaInfo.PartnerAreaGuid)">
+                        <div class="ui purple empty circular label"></div>
+                        {{areaInfo.PartnerAreaName}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="right menu" style="margin-bottom: 20px">
             <a class="ui item">
-                区域被吴过滤过
+                区域被才龙过滤过
             </a>
         </div>
     </div>
@@ -110,8 +119,8 @@
             <th>车辆号</th>
             <th>SN号</th>
             <th>蓝牙号</th>
-            <th>录入者</th>
-            <th>录入时间</th>
+            <!--<th>录入者</th>-->
+            <!--<th>录入时间</th>-->
             <th>查看日志</th>
             <th>车辆在线检测</th>
             <th>车辆参数查看</th>
@@ -124,8 +133,8 @@
             <td>{{eListBikeInfo.BicycleNo}}</td>
             <td>{{eListBikeInfo.ControllerNo}}</td>
             <td>{{eListBikeInfo.ControllerBluetoothNo}}</td>
-            <td>{{eListBikeInfo.Operator}}</td>
-            <td>{{eListBikeInfo.Batch}}</td>
+            <!--<td>{{eListBikeInfo.Operator}}</td>-->
+            <!--<td>{{eListBikeInfo.Batch}}</td>-->
             <td>
                 <button class="ui blue submit button" ng-click="getAEBikeLog(eListBikeInfo.BicycleNo)">日志</button>
             </td>
@@ -166,4 +175,10 @@
     </div>
 
 </body>
+<script>
+
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+</script>
 </html>

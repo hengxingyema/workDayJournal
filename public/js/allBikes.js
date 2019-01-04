@@ -134,6 +134,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
     //运维人员登录
     $scope.yunweiAccountSession = undefined;
+    $scope.PerationUserGuid = undefined;
     $scope.yunweiLogin = function () {
 
         $scope.netRequestState = 'start';
@@ -148,6 +149,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
                 if(response.returnCode == 1){
                     $scope.yunweiAccountSession = response.Data.SessionKey;
                     $scope.mimaYunweiLoginInfo = '登录成功:' + response.Data.LoginName;
+                    $scope.PerationUserGuid = response.Data.PerationUserGuid;
 
                     getAllOperationArea();
                 }else {
@@ -171,6 +173,31 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
     $scope.getInputEBikeLog = function () {
         window.open("http://mimacx.leanapp.cn/mimacxLog/" + $scope.inputBikeNo);
     };
+
+    // 车辆上锁
+    $scope.closeBike = function (eListBikeInfo) {
+        if ($scope.yunweiAccountSession == undefined){
+            toastr.error("请先登录运维帐号");
+            return;
+        }
+
+        $http.post("http://120.27.221.91:2000/Peration/AppBack" , {
+            "BicycleNo" : eListBikeInfo.BicycleNo,
+            "UserGuid" : $scope.PerationUserGuid,
+            "SessionKey" : $scope.yunweiAccountSession,
+            "mimacxtimeSpan" : $scope.timestamp,
+            "mimacxSign" : $scope.mimacxSign
+        })
+            .then(function (result) {
+                if (result.data.returnCode == 1){
+                    eListBikeInfo.closeBikeSuccess = result.data.returnMsg
+                }
+                else {
+                    eListBikeInfo.closeBikeSuccess = result.data.returnMsg;
+                }
+            })
+
+    }
 
     // toastr.info("请先登录运维帐号");
 

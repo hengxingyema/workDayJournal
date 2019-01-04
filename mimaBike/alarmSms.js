@@ -25,7 +25,7 @@ exports.getServiceMonitorMembers = function () {
     //     ServiceMonitorDes: 'Socket服务器异常(截屏异常时的log)'
     // };
     var sendSmsData_Sk = {
-        mobilePhoneNumber: '13815990855',
+        mobilePhoneNumber: '15852580112',
         template: 'ServiceMonitor',
         ServiceMonitorDes: 'Socket服务器异常(截屏异常时的log)'
     };

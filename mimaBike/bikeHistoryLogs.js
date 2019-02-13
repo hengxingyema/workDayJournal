@@ -77,7 +77,6 @@ router.post('/ebileLogList',function (req, res) {
             historyLogObject.LogType = ebikeHistoryLogObjects[i].get('LogType');
             historyLogObject.Remark = ebikeHistoryLogObjects[i].get('Remark');
             historyLogObject.SourceType = ebikeHistoryLogObjects[i].get('SourceType');
-
             historyLogObject.userPhone = ebikeHistoryLogObjects[i].get('userPhone');
             historyLogObject.bikeOperationResult = ebikeHistoryLogObjects[i].get('bikeOperationResult');
             historyLogObject.bikeOperationResultDes = ebikeHistoryLogObjects[i].get('bikeOperationResultDes');

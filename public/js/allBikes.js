@@ -41,9 +41,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
     //目前测试区域
     //Tbit,颐和盛世小区,苏州度假区测试,东凤镇,（江苏大学，三峡大学，合肥暂时不运营，所以去除）
-    $scope.validAreasNames = ['度假区', '池州', '东凤镇', '颐和盛世小区', '渭南', '三原', '洋县', '彬州','礼泉'];
-
-    var validAreasNames = parseInt(process.env['validAreasNames']);
+    $scope.validAreasNames = ['度假区', '东凤镇', '池州', '渭南', '三原', '洋县', '彬州','礼泉','澄城县','西乡县','南郑县','勉县'];
 
     function getAllOperationArea() {
         $scope.netRequestState = 'start';
@@ -58,8 +56,8 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
                     for (var i = 0; i < response.Data.length; i++){
                         var tempArea = response.Data[i];
 
-                        for(var j = 0; j < validAreasNames.length; j++){
-                            var areaNameStr = validAreasNames[j];
+                        for(var j = 0; j < $scope.validAreasNames.length; j++){
+                            var areaNameStr = $scope.validAreasNames[j];
                             if(tempArea.PartnerAreaName.indexOf(areaNameStr) != -1){
                                 $scope.allMimaAreas.push(tempArea);
                                 break;
@@ -183,7 +181,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
             return;
         }
 
-        $http.post("http://120.27.221.91:2000/Peration/AppBack" , {
+        $http.post("http://120.27.221.91/Peration/AppBack" , {
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "UserGuid" : $scope.PerationUserGuid,
             "SessionKey" : $scope.yunweiAccountSession,
@@ -213,7 +211,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
         eListBikeInfo.isGetting = true;
         eListBikeInfo.paramValue = '请求中...';
 
-        $http.post("http://yw.mimacx.com:2000/Peration/GetProperty",{
+        $http.post("http://yw.mimacx.com/Peration/GetProperty",{
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "ParamName" : eListBikeInfo.gettingParam,
             "Accesskey" : '123456',

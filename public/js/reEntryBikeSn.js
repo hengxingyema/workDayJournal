@@ -48,7 +48,7 @@ app.controller('reEntryBikeSnCtrl',
         vm.progress=0;
 
         if ($scope.yunweiAccountSession != undefined){
-            $http.post("http://yw.mimacx.com:2000/Operations/UpdateSystemNo",{
+            $http.post("http://yw.mimacx.com/Operations/UpdateSystemNo",{
                 "SessionKey": $scope.yunweiAccountSession,
                 "mimacxtimeSpan" : $scope.timestamp,
                 "mimacxSign" : $scope.mimacxSign,

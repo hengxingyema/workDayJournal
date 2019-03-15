@@ -181,7 +181,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
             return;
         }
 
-        $http.post("http://120.27.221.91/Peration/AppBack" , {
+        $http.post("http://120.27.221.91:2000/Peration/AppBack" , {
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "UserGuid" : $scope.PerationUserGuid,
             "SessionKey" : $scope.yunweiAccountSession,

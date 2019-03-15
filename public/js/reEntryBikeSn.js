@@ -21,7 +21,7 @@ app.controller('reEntryBikeSnCtrl',
     $scope.yunWeiLogin = function () {
 
         $scope.netRequestState = 'start';
-        $http.post("http://yw.mimacx.com:2000/Peration/Login",{
+        $http.post("http://yw.mimacx.com/Peration/Login",{
             "UserName" : "wucailongMaster",
             "UserPass" : "wcl",
             "mimacxtimeSpan" : $scope.timestamp,

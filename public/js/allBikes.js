@@ -43,6 +43,8 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
     //Tbit,颐和盛世小区,苏州度假区测试,东凤镇,（江苏大学，三峡大学，合肥暂时不运营，所以去除）
     $scope.validAreasNames = ['度假区', '池州', '东凤镇', '颐和盛世小区', '渭南', '三原', '洋县', '彬州','礼泉'];
 
+    var validAreasNames = parseInt(process.env['validAreasNames']);
+
     function getAllOperationArea() {
         $scope.netRequestState = 'start';
         //获取所有运营区域
@@ -56,8 +58,8 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
                     for (var i = 0; i < response.Data.length; i++){
                         var tempArea = response.Data[i];
 
-                        for(var j = 0; j < $scope.validAreasNames.length; j++){
-                            var areaNameStr = $scope.validAreasNames[j];
+                        for(var j = 0; j < validAreasNames.length; j++){
+                            var areaNameStr = validAreasNames[j];
                             if(tempArea.PartnerAreaName.indexOf(areaNameStr) != -1){
                                 $scope.allMimaAreas.push(tempArea);
                                 break;
@@ -138,7 +140,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
     $scope.yunweiLogin = function () {
 
         $scope.netRequestState = 'start';
-        $http.post("http://yw.mimacx.com:2000/Peration/Login",{
+        $http.post("http://yw.mimacx.com/Peration/Login",{
             "UserName" : 'wucailongMaster',
             "UserPass" : 'wcl',
             "mimacxtimeSpan" : $scope.timestamp,
@@ -247,7 +249,7 @@ app.controller('allBikesCtrl', function($scope, $http, $location,Md5) {
 
         eListBikeInfo.isSetting = true;
         eListBikeInfo.paramValue = '设置...';
-        $http.post("http://yw.mimacx.com:2000/Peration/SetProperty",{
+        $http.post("http://yw.mimacx.com/Peration/SetProperty",{
             "BicycleNo" : eListBikeInfo.BicycleNo,
             "ParamName" : eListBikeInfo.settingParam,
             "ParamValue" : eListBikeInfo.settingValue,
